@@ -17,6 +17,10 @@ defmodule UliCommunityWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :authenticated_api do
+    plug UliComminityWeb.Plugs.AuthenticateApi
+  end
+
   scope "/", UliCommunityWeb do
     pipe_through :browser
 
@@ -47,7 +51,7 @@ defmodule UliCommunityWeb.Router do
 
   ## Authentication routes
 
-  scope "/api", UliCommunityWeb do
+  scope "/nolive", UliCommunityWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 
     get "/users/register", UserRegistrationController, :new
@@ -60,7 +64,7 @@ defmodule UliCommunityWeb.Router do
     put "/users/reset_password/:token", UserResetPasswordController, :update
   end
 
-  scope "/api", UliCommunityWeb do
+  scope "/nolive", UliCommunityWeb do
     pipe_through [:browser, :require_authenticated_user]
 
     get "/users/settings", UserSettingsController, :edit
@@ -68,7 +72,7 @@ defmodule UliCommunityWeb.Router do
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
   end
 
-  scope "/api", UliCommunityWeb do
+  scope "/nolive", UliCommunityWeb do
     pipe_through [:browser]
 
     delete "/users/log_out", UserSessionController, :delete
@@ -79,12 +83,14 @@ defmodule UliCommunityWeb.Router do
   end
 
   ## Auth routes for API
-  scope "/test_api", UliCommunityWeb do
-    pipe_through [:api, :redirect_if_user_is_authenticated]
+  scope "/api", UliCommunityWeb do
+    pipe_through :api
+    post "/auth/login", SessionControllerApi, :new
+  end
 
-    # get "/users/log_in", UserSessionController, :new
-    post "/users/log_in", UserSessionController, :create
-
+  scope "/api", UliCommunityWeb do
+    pipe_through [:api, :authenticated_api]
+    get "/auth/hi", SessionControllerApi, :say_hi
   end
 
   ## Authentication routes
@@ -107,9 +113,11 @@ defmodule UliCommunityWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     live_session :require_authenticated_user,
-      on_mount: [{UliCommunityWeb.UserAuth, :ensure_authenticated}] do
+      on_mount: [{UliCommunityWeb.UserAuth, :ensure_authenticated},
+      {UliCommunityWeb.UserAuth, :ensure_authorized}] do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
+      live "/testadmin", TestAdminRoleLive, :index
     end
   end
 
@@ -123,5 +131,9 @@ defmodule UliCommunityWeb.Router do
       live "/users/confirm/:token", UserConfirmationLive, :edit
       live "/users/confirm", UserConfirmationInstructionsLive, :new
     end
+  end
+
+  def route_info(method, path, host) do
+    Phoenix.Router.route_info(__MODULE__, method, path, host)
   end
 end

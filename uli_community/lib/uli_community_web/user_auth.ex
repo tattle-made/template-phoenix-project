@@ -6,6 +6,8 @@ defmodule UliCommunityWeb.UserAuth do
 
   alias UliCommunity.Accounts
 
+  alias UliCommunity.Authorization
+
   # Make the remember me cookie valid for 60 days.
   # If you want bump or reduce this value, also change
   # the token expiry itself in UserToken.
@@ -172,6 +174,50 @@ defmodule UliCommunityWeb.UserAuth do
     else
       {:cont, socket}
     end
+  end
+
+  # Authorization route
+  def on_mount(:ensure_authorized, _params, _session, socket) do
+    socket =
+      socket
+      |> Phoenix.LiveView.attach_hook(:auth_hook, :handle_params, fn _params, url, socket ->
+        %{assigns: %{current_user: current_user}} = socket
+
+        case Authorization.authorized?(current_user, url, "GET") do
+          true ->
+            socket =
+              socket
+              |> Phoenix.Component.assign(:live_url, url)
+
+            {:cont, socket}
+
+          false ->
+            socket =
+              socket
+              |> Phoenix.LiveView.put_flash(:error, "Not Authorized")
+              |> Phoenix.LiveView.redirect(to: ~p"/")
+
+            {:halt, socket}
+        end
+      end)
+      |> Phoenix.LiveView.attach_hook(:auth_hook_event,
+         :handle_event, fn event, _params, socket ->
+        %{assigns: %{current_user: current_user, live_url: url}} = socket
+
+        case Authorization.authorized?(current_user, url, "GET", event) do
+          true ->
+            {:cont, socket}
+
+          false ->
+            socket =
+              socket
+              |> Phoenix.LiveView.put_flash(:error, "Not Authorized")
+
+            {:halt, socket}
+        end
+      end)
+
+    {:cont, socket}
   end
 
   defp mount_current_user(socket, session) do
