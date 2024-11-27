@@ -8,6 +8,7 @@ defmodule UliCommunity.Accounts.User do
     field :hashed_password, :string, redact: true
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
+    field :role, Ecto.Enum, values: [:user, :admin]
 
     timestamps(type: :utc_datetime)
   end
