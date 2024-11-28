@@ -9,8 +9,8 @@ config :bcrypt_elixir, :log_rounds, 1
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :tattle, Tattle.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "tattle",
+  password: "weak_password",
   hostname: "localhost",
   database: "tattle_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,

@@ -1,4 +1,4 @@
-defmodule UliComminityWeb.Plugs.AuthenticateApi do
+defmodule TattleWeb.Plugs.AuthenticateApi do
   use TattleWeb, :controller
 
   require Logger

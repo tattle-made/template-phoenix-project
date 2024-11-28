@@ -18,7 +18,7 @@ defmodule TattleWeb.Router do
   end
 
   pipeline :authenticated_api do
-    plug UliComminityWeb.Plugs.AuthenticateApi
+    plug TattleWeb.Plugs.AuthenticateApi
   end
 
   scope "/", TattleWeb do
@@ -113,8 +113,10 @@ defmodule TattleWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     live_session :require_authenticated_user,
-      on_mount: [{TattleWeb.UserAuth, :ensure_authenticated},
-      {TattleWeb.UserAuth, :ensure_authorized}] do
+      on_mount: [
+        {TattleWeb.UserAuth, :ensure_authenticated},
+        {TattleWeb.UserAuth, :ensure_authorized}
+      ] do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
       live "/testadmin", TestAdminRoleLive, :index
