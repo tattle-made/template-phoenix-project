@@ -5,14 +5,14 @@ services:
     environment:
       - POSTGRES_USER=tattle
       - POSTGRES_PASSWORD=weak_password
-      - POSTGRES_DB=uli_community_dev
+      - POSTGRES_DB=tattle_dev
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
       interval: 1s
       timeout: 5s
       retries: 10
     volumes:
-      - ~/data/uli_comm_dev/postgres:/var/lib/postgresql/data
+      - ~/data/tattle_dev/postgres:/var/lib/postgresql/data
     ports:
       - 5432:5432
 

@@ -1,7 +1,7 @@
-defmodule UliCommunity.AccountsFixtures do
+defmodule Tattle.AccountsFixtures do
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `UliCommunity.Accounts` context.
+  entities via the `Tattle.Accounts` context.
   """
 
   def unique_user_email, do: "user#{System.unique_integer()}@example.com"
@@ -18,7 +18,7 @@ defmodule UliCommunity.AccountsFixtures do
     {:ok, user} =
       attrs
       |> valid_user_attributes()
-      |> UliCommunity.Accounts.register_user()
+      |> Tattle.Accounts.register_user()
 
     user
   end
