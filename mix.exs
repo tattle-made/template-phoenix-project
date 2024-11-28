@@ -1,9 +1,9 @@
-defmodule UliCommunity.MixProject do
+defmodule Tattle.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :uli_community,
+      app: :tattle,
       version: "0.1.0",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -18,7 +18,7 @@ defmodule UliCommunity.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {UliCommunity.Application, []},
+      mod: {Tattle.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -76,10 +76,10 @@ defmodule UliCommunity.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind uli_community", "esbuild uli_community"],
+      "assets.build": ["tailwind tattle", "esbuild tattle"],
       "assets.deploy": [
-        "tailwind uli_community --minify",
-        "esbuild uli_community --minify",
+        "tailwind tattle --minify",
+        "esbuild tattle --minify",
         "phx.digest"
       ]
     ]

@@ -1,4 +1,4 @@
-defmodule UliCommunity.Repo.Migrations.CreateUsersAuthTables do
+defmodule Tattle.Repo.Migrations.CreateUsersAuthTables do
   use Ecto.Migration
 
   def change do

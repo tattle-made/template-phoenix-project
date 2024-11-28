@@ -1,7 +1,7 @@
-defmodule UliCommunityWeb.UserSessionControllerTest do
-  use UliCommunityWeb.ConnCase, async: true
+defmodule TattleWeb.UserSessionControllerTest do
+  use TattleWeb.ConnCase, async: true
 
-  import UliCommunity.AccountsFixtures
+  import Tattle.AccountsFixtures
 
   setup do
     %{user: user_fixture()}
@@ -35,7 +35,7 @@ defmodule UliCommunityWeb.UserSessionControllerTest do
           }
         })
 
-      assert conn.resp_cookies["_uli_community_web_user_remember_me"]
+      assert conn.resp_cookies["_tattle_web_user_remember_me"]
       assert redirected_to(conn) == ~p"/"
     end
 

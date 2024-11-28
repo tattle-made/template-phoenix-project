@@ -1,11 +1,11 @@
-defmodule UliCommunityWeb.UserForgotPasswordLiveTest do
-  use UliCommunityWeb.ConnCase, async: true
+defmodule TattleWeb.UserForgotPasswordLiveTest do
+  use TattleWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
-  import UliCommunity.AccountsFixtures
+  import Tattle.AccountsFixtures
 
-  alias UliCommunity.Accounts
-  alias UliCommunity.Repo
+  alias Tattle.Accounts
+  alias Tattle.Repo
 
   describe "Forgot password page" do
     test "renders email page", %{conn: conn} do

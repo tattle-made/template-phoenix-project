@@ -1,5 +1,5 @@
-defmodule UliCommunityWeb.PageControllerTest do
-  use UliCommunityWeb.ConnCase
+defmodule TattleWeb.PageControllerTest do
+  use TattleWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")

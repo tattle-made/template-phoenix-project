@@ -1,8 +1,8 @@
-defmodule UliCommunityWeb.UserSettingsControllerTest do
-  use UliCommunityWeb.ConnCase, async: true
+defmodule TattleWeb.UserSettingsControllerTest do
+  use TattleWeb.ConnCase, async: true
 
-  alias UliCommunity.Accounts
-  import UliCommunity.AccountsFixtures
+  alias Tattle.Accounts
+  import Tattle.AccountsFixtures
 
   setup :register_and_log_in_user
 

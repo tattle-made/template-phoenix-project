@@ -1,8 +1,8 @@
-defmodule UliCommunityWeb.UserRegistrationLiveTest do
-  use UliCommunityWeb.ConnCase, async: true
+defmodule TattleWeb.UserRegistrationLiveTest do
+  use TattleWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
-  import UliCommunity.AccountsFixtures
+  import Tattle.AccountsFixtures
 
   describe "Registration page" do
     test "renders registration page", %{conn: conn} do

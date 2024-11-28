@@ -1,9 +1,9 @@
-defmodule UliCommunityWeb.UserConfirmationControllerTest do
-  use UliCommunityWeb.ConnCase, async: true
+defmodule TattleWeb.UserConfirmationControllerTest do
+  use TattleWeb.ConnCase, async: true
 
-  alias UliCommunity.Accounts
-  alias UliCommunity.Repo
-  import UliCommunity.AccountsFixtures
+  alias Tattle.Accounts
+  alias Tattle.Repo
+  import Tattle.AccountsFixtures
 
   setup do
     %{user: user_fixture()}

@@ -1,8 +1,8 @@
-defmodule UliCommunityWeb.UserLoginLiveTest do
-  use UliCommunityWeb.ConnCase, async: true
+defmodule TattleWeb.UserLoginLiveTest do
+  use TattleWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
-  import UliCommunity.AccountsFixtures
+  import Tattle.AccountsFixtures
 
   describe "Log in page" do
     test "renders log in page", %{conn: conn} do

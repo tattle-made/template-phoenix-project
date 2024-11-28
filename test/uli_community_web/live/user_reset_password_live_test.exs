@@ -1,10 +1,10 @@
-defmodule UliCommunityWeb.UserResetPasswordLiveTest do
-  use UliCommunityWeb.ConnCase, async: true
+defmodule TattleWeb.UserResetPasswordLiveTest do
+  use TattleWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
-  import UliCommunity.AccountsFixtures
+  import Tattle.AccountsFixtures
 
-  alias UliCommunity.Accounts
+  alias Tattle.Accounts
 
   setup do
     user = user_fixture()

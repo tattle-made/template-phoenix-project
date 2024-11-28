@@ -1,11 +1,11 @@
-defmodule UliCommunityWeb.UserConfirmationLiveTest do
-  use UliCommunityWeb.ConnCase, async: true
+defmodule TattleWeb.UserConfirmationLiveTest do
+  use TattleWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
-  import UliCommunity.AccountsFixtures
+  import Tattle.AccountsFixtures
 
-  alias UliCommunity.Accounts
-  alias UliCommunity.Repo
+  alias Tattle.Accounts
+  alias Tattle.Repo
 
   setup do
     %{user: user_fixture()}

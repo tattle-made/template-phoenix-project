@@ -1,8 +1,8 @@
-# UliCommunity
+# Tattle
 
 This project is a Phoenix template designed to streamline the setting up of a Phoenix application with built-in authentication and authorization. It supports authentication for both LiveView and non-LiveView components. Additionally, it includes an API server for generating authentication tokens and performing actions securely using a valid token.
 
-**Note:** The name of this Phoenix project (the name that was used in the generator while creating the project) is "uli_community"
+**Note:** The name of this Phoenix project (the name that was used in the generator while creating the project) is "tattle"
 
 ## Table of Content
 
@@ -63,7 +63,7 @@ This post was referred to while implementing the token functionality: https://de
 
 The Token-based authentication is implemented to use the project as a service. 
 
-- A separate `/UliCommunity/api` context is created. Inside it, there is the `Token` module. 
+- A separate `/Tattle/api` context is created. Inside it, there is the `Token` module. 
 - The Token module uses `Phoenix.Token` to havea  sign and verify token function. 
 - `Phoenix.Token` is a JSON Web Token.
 - For this functionality, separate routes with the scope `/api` are created. 

@@ -1,9 +1,9 @@
-defmodule UliCommunityWeb.UserSettingsLiveTest do
-  use UliCommunityWeb.ConnCase, async: true
+defmodule TattleWeb.UserSettingsLiveTest do
+  use TattleWeb.ConnCase, async: true
 
-  alias UliCommunity.Accounts
+  alias Tattle.Accounts
   import Phoenix.LiveViewTest
-  import UliCommunity.AccountsFixtures
+  import Tattle.AccountsFixtures
 
   describe "Settings page" do
     test "renders settings page", %{conn: conn} do

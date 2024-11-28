@@ -1,10 +1,10 @@
-defmodule UliCommunity.AccountsTest do
-  use UliCommunity.DataCase
+defmodule Tattle.AccountsTest do
+  use Tattle.DataCase
 
-  alias UliCommunity.Accounts
+  alias Tattle.Accounts
 
-  import UliCommunity.AccountsFixtures
-  alias UliCommunity.Accounts.{User, UserToken}
+  import Tattle.AccountsFixtures
+  alias Tattle.Accounts.{User, UserToken}
 
   describe "get_user_by_email/1" do
     test "does not return the user if the email does not exist" do

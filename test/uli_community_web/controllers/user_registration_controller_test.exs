@@ -1,7 +1,7 @@
-defmodule UliCommunityWeb.UserRegistrationControllerTest do
-  use UliCommunityWeb.ConnCase, async: true
+defmodule TattleWeb.UserRegistrationControllerTest do
+  use TattleWeb.ConnCase, async: true
 
-  import UliCommunity.AccountsFixtures
+  import Tattle.AccountsFixtures
 
   describe "GET /users/register" do
     test "renders registration page", %{conn: conn} do

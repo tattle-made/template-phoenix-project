@@ -1,17 +1,17 @@
-defmodule UliCommunityWeb.UserAuthTest do
-  use UliCommunityWeb.ConnCase, async: true
+defmodule TattleWeb.UserAuthTest do
+  use TattleWeb.ConnCase, async: true
 
   alias Phoenix.LiveView
-  alias UliCommunity.Accounts
-  alias UliCommunityWeb.UserAuth
-  import UliCommunity.AccountsFixtures
+  alias Tattle.Accounts
+  alias TattleWeb.UserAuth
+  import Tattle.AccountsFixtures
 
-  @remember_me_cookie "_uli_community_web_user_remember_me"
+  @remember_me_cookie "_tattle_web_user_remember_me"
 
   setup %{conn: conn} do
     conn =
       conn
-      |> Map.replace!(:secret_key_base, UliCommunityWeb.Endpoint.config(:secret_key_base))
+      |> Map.replace!(:secret_key_base, TattleWeb.Endpoint.config(:secret_key_base))
       |> init_test_session(%{})
 
     %{user: user_fixture(), conn: conn}
@@ -66,7 +66,7 @@ defmodule UliCommunityWeb.UserAuthTest do
 
     test "broadcasts to the given live_socket_id", %{conn: conn} do
       live_socket_id = "users_sessions:abcdef-token"
-      UliCommunityWeb.Endpoint.subscribe(live_socket_id)
+      TattleWeb.Endpoint.subscribe(live_socket_id)
 
       conn
       |> put_session(:live_socket_id, live_socket_id)
@@ -164,7 +164,7 @@ defmodule UliCommunityWeb.UserAuthTest do
       session = conn |> put_session(:user_token, user_token) |> get_session()
 
       socket = %LiveView.Socket{
-        endpoint: UliCommunityWeb.Endpoint,
+        endpoint: TattleWeb.Endpoint,
         assigns: %{__changed__: %{}, flash: %{}}
       }
 
@@ -176,7 +176,7 @@ defmodule UliCommunityWeb.UserAuthTest do
       session = conn |> get_session()
 
       socket = %LiveView.Socket{
-        endpoint: UliCommunityWeb.Endpoint,
+        endpoint: TattleWeb.Endpoint,
         assigns: %{__changed__: %{}, flash: %{}}
       }
 
