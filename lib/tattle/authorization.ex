@@ -2,7 +2,6 @@ defmodule Tattle.Authorization do
   alias ElixirLS.LanguageServer.Plugins.Phoenix
   alias TattleWeb.Router
 
-
   def authorized?(user, path, method, event \\ nil) when is_binary(path) do
     role = user && user.role
     uri = URI.parse(path)
