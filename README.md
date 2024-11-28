@@ -18,6 +18,7 @@ This project is a Phoenix template designed to streamline the setting up of a Ph
 
 To start your Phoenix server:
 
+  * Run `docker compose up`
   * Run `mix setup` to install and setup dependencies
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 

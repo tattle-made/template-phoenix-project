@@ -1,7 +1,5 @@
 defmodule Tattle.Authorization do
-  alias ElixirLS.LanguageServer.Plugins.Phoenix
   alias TattleWeb.Router
-
 
   def authorized?(user, path, method, event \\ nil) when is_binary(path) do
     role = user && user.role
@@ -20,5 +18,4 @@ defmodule Tattle.Authorization do
 
   defp get_action(%{phoenix_live_view: plv}), do: elem(plv, 1)
   defp get_action(%{plug_opts: action}), do: action
-
 end
