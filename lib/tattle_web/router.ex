@@ -21,6 +21,10 @@ defmodule TattleWeb.Router do
     plug TattleWeb.Plugs.AuthenticateApi
   end
 
+  pipeline :authenticated_access_token do
+    plug TattleWeb.Plugs.AuthenticateAccessToken
+  end
+
   scope "/", TattleWeb do
     pipe_through :browser
 
@@ -93,6 +97,12 @@ defmodule TattleWeb.Router do
     get "/auth/hi", SessionControllerApi, :say_hi
   end
 
+  ## Auth routes for Access Token
+  scope "/api/accesstoken", TattleWeb do
+    pipe_through [:api, :authenticated_access_token]
+    get "/hi", AccessTokenController, :say_hi
+  end
+
   ## Authentication routes
 
   scope "/", TattleWeb do
@@ -120,6 +130,7 @@ defmodule TattleWeb.Router do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
       live "/testadmin", TestAdminRoleLive, :index
+      live "/gentoken", TokenGeneratorLive, :index
     end
   end
 

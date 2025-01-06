@@ -3,7 +3,6 @@ defmodule TattleWeb.SessionControllerApi do
   use TattleWeb, :controller
 
   alias Tattle.Accounts
-  alias TattleWeb.UserAuth
   alias Tattle.Api.Token
 
 
