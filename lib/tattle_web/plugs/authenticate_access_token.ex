@@ -18,7 +18,7 @@ defmodule TattleWeb.Plugs.AuthenticateAccessToken do
          true <- access_token.expiry >= Date.utc_today() do
       conn |> assign(:access_token, access_token)
     else
-      _error -> conn |> put_status(:unauthorized) |> json(%{error: "Access is Unauthorized"})
+      _error -> conn |> put_status(:unauthorized) |> json(%{error: "Access is Unauthorized"}) |> halt()
     end
   end
 
