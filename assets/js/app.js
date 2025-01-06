@@ -47,8 +47,6 @@ window.liveSocket = liveSocket;
 window.addEventListener("phx:copy", (event) => {
   let text = event.target.innerText;
   navigator.clipboard.writeText(text).then(() => {
-    console.log("Copied to Clipboard!");
-
     let copyBtn = document.getElementById("copy-button");
     copyBtn.innerHTML = "Copied! 📋";
     setTimeout(() => {
