@@ -89,7 +89,7 @@ ENV MIX_ENV="prod"
 
 # Only copy the final release from the build stage
 # NOTE: the location is project specific, please change it as needed
-COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/uli_community ./
+COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/tattle ./
 
 USER nobody
 
